@@ -1,3 +1,2 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿var seqList = new SequentialList<int>();
 
-Console.WriteLine("Hello, World!");
