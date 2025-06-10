@@ -140,6 +140,33 @@ public class SequentialList<T>(int capacity)
 
         return -1;
     }
+
+    /// <summary>
+    /// 从表中移除指定元素
+    /// </summary>
+    /// <param name="item"></param>
+    public void Remove(T item)
+    {
+        // 1. 查找元素在表中的位置
+        var index = IndexOf(item);
+        
+        // 2. 如果不存在，则抛出异常
+        if (index == -1)
+        {
+            throw new ArgumentException("指定元素不存在");
+        }
+        
+        // 3. 如果存在，则从index的位置开始，将其后的所有元素向前移动一位
+        var length = Count - 1;
+        var span = new Span<T>(_elements, index, Count);
+        for (var i = 0; i < length; i++)
+        {
+            span[i] = span[i + 1];
+        }
+
+        // 4. 表长度减1
+        Count--;
+    }
     
     public override string ToString() => string.Join(", ", _elements.Take(Count));
 
