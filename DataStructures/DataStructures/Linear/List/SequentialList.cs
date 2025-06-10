@@ -121,6 +121,25 @@ public class SequentialList<T>(int capacity)
         // 6. 表长度加1
         Count++;
     }
+
+    /// <summary>
+    /// 获取指定元素在表中的位置 (位置基于0)
+    /// </summary>
+    /// <param name="item"></param>
+    /// <returns></returns>
+    public int IndexOf(T item)
+    {
+        var span = new Span<T>(_elements, 0, Count);
+        for (var i = 0; i < Count; i++)
+        {
+            if (EqualityComparer<T>.Default.Equals(span[i], item))
+            {
+                return i;
+            }
+        }
+
+        return -1;
+    }
     
     public override string ToString() => string.Join(", ", _elements.Take(Count));
 
