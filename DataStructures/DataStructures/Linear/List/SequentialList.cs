@@ -82,6 +82,46 @@ public class SequentialList<T>(int capacity)
         Count++;
     }
 
+    /// <summary>
+    /// 向表的指定位置插入新元素 (index基于0)
+    /// </summary>
+    /// <param name="item"></param>
+    public void Insert(int index, T item)
+    {
+        // 1. 检查index是否超出Count的范围
+        if (index < 0 || index > Count)
+        {
+            throw new ArgumentOutOfRangeException("指定的下标超界");
+        }
+        
+        // 2. 检查表容量是否足够
+        CheckCapacity();
+        
+        // 3. index指向表尾，则直接插入
+        if (index == Count)
+        {
+            _elements[index] = item;
+
+            Count++;
+
+            return;
+        }
+        
+        // 4. 如果index未指向表尾，则从index位置开始，将其后的全部元素向后移动一位
+        var length = Count + 1 - index;
+        var span = new Span<T>(_elements, index, length);
+        for (var i = length - 1; i > 0; i--)
+        {
+            span[i] = span[i - 1];
+        }
+
+        // 5. 将新元素插入index所指向的单元
+        span[0] = item;
+
+        // 6. 表长度加1
+        Count++;
+    }
+    
     public override string ToString() => string.Join(", ", _elements.Take(Count));
 
     /// <summary>
