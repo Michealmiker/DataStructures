@@ -167,6 +167,30 @@ public class SequentialList<T>(int capacity)
         // 4. 表长度减1
         Count--;
     }
+
+    /// <summary>
+    /// 从表中指定位置移除元素 (index基于0)
+    /// </summary>
+    /// <param name="index"></param>
+    public void RemoveAt(int index)
+    {
+        // 1. 检查index是否超过Count的界限
+        if (index < 0 || index >= Count)
+        {
+            throw new ArgumentOutOfRangeException("指定位置超出了表所包含的元素的长度");
+        }
+        
+        // 2. 如果未超界，则将其后的所有元素的位置向前移动一位
+        var length = Count - index;
+        var span = new Span<T>(_elements, index, length);
+        for (var i = 0; i < length - 1; i++)
+        {
+            span[i] = span[i + 1];
+        }
+
+        // 3. 表长度减1
+        Count--;
+    }
     
     public override string ToString() => string.Join(", ", _elements.Take(Count));
 
