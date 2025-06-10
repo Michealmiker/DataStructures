@@ -157,9 +157,9 @@ public class SequentialList<T>(int capacity)
         }
         
         // 3. 如果存在，则从index的位置开始，将其后的所有元素向前移动一位
-        var length = Count - 1;
-        var span = new Span<T>(_elements, index, Count);
-        for (var i = 0; i < length; i++)
+        var length = Count - index;
+        var span = new Span<T>(_elements, index, length);
+        for (var i = 0; i < length - 1; i++)
         {
             span[i] = span[i + 1];
         }
