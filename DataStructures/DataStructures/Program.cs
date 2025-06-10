@@ -42,10 +42,15 @@ for (var i = 0; i < 10; i++)
     seqList.Add(i + 1);
 }
 
-// seqList.Remove(5);
-seqList.RemoveAt(5);
+foreach (var item in seqList)
+{
+    Console.WriteLine(item);
+}
 
-Console.WriteLine("表信息：");
-Console.WriteLine($"表容量：{seqList.Capacity}");
-Console.WriteLine($"表长度：{seqList.Count}");
-Console.WriteLine($"表内容:\n{seqList}");
+// seqList.Remove(5);
+// seqList.RemoveAt(5);
+//
+// Console.WriteLine("表信息：");
+// Console.WriteLine($"表容量：{seqList.Capacity}");
+// Console.WriteLine($"表长度：{seqList.Count}");
+// Console.WriteLine($"表内容:\n{seqList}");

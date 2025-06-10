@@ -194,6 +194,14 @@ public class SequentialList<T>(int capacity)
     
     public override string ToString() => string.Join(", ", _elements.Take(Count));
 
+    public IEnumerator<T> GetEnumerator()
+    {
+        for (var i = 0; i < Count; i++)
+        {
+            yield return _elements[i];
+        }
+    }
+    
     /// <summary>
     /// 检查表容量
     /// </summary>
