@@ -1,8 +1,13 @@
 ﻿var seqList = new SequentialList<int>();
 
+// for (var i = 0; i < 10; i++)
+// {
+//     seqList.Add(i + 1);
+// }
+
 for (var i = 0; i < 10; i++)
 {
-    seqList.Add(i + 1);
+    seqList.AddFirst(i + 1);
 }
 
 Console.WriteLine("表信息：");

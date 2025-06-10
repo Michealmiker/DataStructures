@@ -49,6 +49,39 @@ public class SequentialList<T>(int capacity)
         Count++;
     }
 
+    /// <summary>
+    /// 向表头插入新元素
+    /// </summary>
+    /// <param name="item"></param>
+    public void AddFirst(T item)
+    {
+        // 1. 检查表容量是否足够
+        CheckCapacity();
+        
+        // 2. 如果是第一个元素，则直接插入
+        if (Count == 0)
+        {
+            _elements[0] = item;
+
+            Count++;
+
+            return;
+        }
+        
+        // 3. 如果不是第一个元素，则将表中的所有元素向后移动一位
+        var span = new Span<T>(_elements, 0, Count + 1);
+        for (var i = Count; i > 0; i--)
+        {
+            span[i] = span[i - 1];
+        }
+
+        // 4. 将新元素插入下标为1的单元中
+        span[0] = item;
+
+        // 5. 表长度加1
+        Count++;
+    }
+
     public override string ToString() => string.Join(", ", _elements.Take(Count));
 
     /// <summary>
