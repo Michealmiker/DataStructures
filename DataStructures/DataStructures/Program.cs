@@ -6,4 +6,5 @@
 // TestSequentialList.TestRemoveAt();
 // TestSequentialList.TestEnumerate();
 
-TestLinkedList.TestAdd();
+// TestLinkedList.TestAdd();
+TestLinkedList.TestAddFirst();

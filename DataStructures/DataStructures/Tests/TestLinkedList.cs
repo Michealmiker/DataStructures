@@ -13,6 +13,16 @@ public static class TestLinkedList
 
         PrintListInfo();
     }
+
+    public static void TestAddFirst()
+    {
+        for (var i = 0; i < 10; i++)
+        {
+            _linkedList.AddFirst(i + 1);
+        }
+        
+        PrintListInfo();
+    }
     
     private static void PrintListInfo()
     {

@@ -55,6 +55,39 @@ public class LinkedList<T>
         Count++;
     }
 
+    /// <summary>
+    /// 向表头插入新元素
+    /// </summary>
+    /// <param name="item"></param>
+    public void AddFirst(T item)
+    {
+        // 1. 新建节点
+        var newNode = new ListNode
+        {
+            data = item,
+            next = null
+        };
+        
+        // 2. 如果表头为空，则将新节点放在表头后，返回
+        if (_head is null)
+        {
+            _head = newNode;
+
+            Count++;
+
+            return;
+        }
+        
+        // 3. 将新节点的下一节点赋值为表头所指向的节点
+        newNode.next = _head;
+
+        // 4. 将表头所指向的节点修改为新节点
+        _head = newNode;
+
+        // 5. 表长度加1
+        Count++;
+    }
+
     public override string ToString()
     {
         var stringBuilder = new StringBuilder();
