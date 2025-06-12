@@ -7,4 +7,5 @@
 // TestSequentialList.TestEnumerate();
 
 // TestLinkedList.TestAdd();
-TestLinkedList.TestAddFirst();
+// TestLinkedList.TestAddFirst();
+TestLinkedList.TestInsert();

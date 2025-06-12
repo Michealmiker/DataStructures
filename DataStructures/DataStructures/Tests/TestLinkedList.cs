@@ -23,6 +23,27 @@ public static class TestLinkedList
         
         PrintListInfo();
     }
+
+    public static void TestInsert()
+    {
+        for (var i = 0; i < 10; i++)
+        {
+            _linkedList.Add(i + 1);
+        }
+
+        var rand = new Random();
+        for (var i = 0; i < 10; i++)
+        {
+            var index = rand.Next(0, _linkedList.Count);
+            var number = rand.Next(500, 600);
+            
+            _linkedList.Insert(index, number);
+            
+            Console.WriteLine($"向表第{index + 1}位置插入新元素{number}");
+        }
+        
+        PrintListInfo();
+    }
     
     private static void PrintListInfo()
     {
