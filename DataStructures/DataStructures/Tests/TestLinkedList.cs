@@ -45,6 +45,22 @@ public static class TestLinkedList
         PrintListInfo();
     }
     
+    public static void TestIndexOf()
+    {
+        for (var i = 0; i < 10; i++)
+        {
+            _linkedList.Add(i + 1);
+        }
+        
+        var location = _linkedList.IndexOf(5);
+        var location2 = _linkedList.IndexOf(1000);
+        
+        Console.WriteLine($"10在表中的位置为{location}");
+        Console.WriteLine($"1000在表中的位置为{location2}");
+
+        PrintListInfo();
+    }
+    
     private static void PrintListInfo()
     {
         Console.WriteLine("表信息：");

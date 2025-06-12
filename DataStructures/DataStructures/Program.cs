@@ -8,4 +8,5 @@
 
 // TestLinkedList.TestAdd();
 // TestLinkedList.TestAddFirst();
-TestLinkedList.TestInsert();
+// TestLinkedList.TestInsert();
+TestLinkedList.TestIndexOf();

@@ -138,6 +138,46 @@ public class LinkedList<T>
         // 7. 表长度加1
         Count++;
     }
+
+    /// <summary>
+    /// 获取元素在表中的位置
+    /// </summary>
+    /// <param name="item"></param>
+    /// <returns></returns>
+    public int IndexOf(T item)
+    {
+        // 1. 检查表是否为空，如果为空则直接抛出异常
+        if (_head is null)
+        {
+            throw new NullReferenceException("链表为空");
+        }
+        
+        // 2 如果指定的元素就是表头所指向的节点所保存的元素，则直接返回坐标0
+        if (EqualityComparer<T>.Default.Equals(_head!.data, item))
+        {
+            return 0;
+        }
+        
+        // 3. 如果不是表头，则创建一个临时引用，
+        //    并通过临时引用遍历整个链表，一个元素一个元素的对比，
+        //    直到找到指定的元素后，返回记录的index的值
+        var ptr = _head.next;
+        var index = 1;
+
+        while (ptr is not null)
+        {
+            if (EqualityComparer<T>.Default.Equals(ptr.data, item))
+            {
+                return index;
+            }
+            
+            ptr = ptr.next;
+            index++;
+        }
+
+        // 4. 如果上面的循环结束退出，则表示没有找到元素，直接返回-1
+        return -1;
+    }
     
     public override string ToString()
     {
