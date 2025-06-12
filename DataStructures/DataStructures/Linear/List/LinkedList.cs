@@ -178,6 +178,51 @@ public class LinkedList<T>
         // 4. 如果上面的循环结束退出，则表示没有找到元素，直接返回-1
         return -1;
     }
+
+    /// <summary>
+    /// 从表中移除指定的元素
+    /// </summary>
+    /// <param name="item"></param>
+    public void Remove(T item)
+    {
+        // 1. 检查表是否为空，如果为空，则直接抛出异常
+        if (_head is null)
+        {
+            throw new NullReferenceException("链表为空");
+        }
+        
+        // 2. 检查指定元素是否为表头元素，如果是表头元素，则直接将表头引用修改为其下一个元素
+        if (EqualityComparer<T>.Default.Equals(_head!.data, item))
+        {
+            var node = _head;
+            
+            _head = _head.next;
+            node.next = null;
+
+            Count--;
+
+            return;
+        }
+        
+        // 3. 如果不是表头元素，则创建一个临时引用，
+        //    并通过临时引用，一个一个比较当前链表元素的下一节点所保存的元素是否为指定元素，
+        //    如果是指定元素，则将当前节点的下一节点向后移动一位
+        var ptr = _head;
+
+        while (ptr.next is not null)
+        {
+            if (EqualityComparer<T>.Default.Equals(ptr.next.data, item))
+            {
+                ptr.next = ptr.next.next;
+
+                Count--;
+
+                return;
+            }
+            
+            ptr = ptr.next;
+        }
+    }
     
     public override string ToString()
     {

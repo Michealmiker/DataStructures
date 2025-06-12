@@ -9,4 +9,5 @@
 // TestLinkedList.TestAdd();
 // TestLinkedList.TestAddFirst();
 // TestLinkedList.TestInsert();
-TestLinkedList.TestIndexOf();
+// TestLinkedList.TestIndexOf();
+TestLinkedList.TestRemove();
