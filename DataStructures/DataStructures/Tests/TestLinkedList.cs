@@ -85,6 +85,19 @@ public static class TestLinkedList
         PrintListInfo();
     }
     
+    public static void TestEnumerate()
+    {
+        for (var i = 0; i < 10; i++)
+        {
+            _linkedList.Add(i + 1);
+        }
+        
+        foreach (var item in _linkedList)
+        {
+            Console.WriteLine(item);
+        }
+    }
+    
     private static void PrintListInfo()
     {
         Console.WriteLine("表信息：");

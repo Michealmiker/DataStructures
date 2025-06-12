@@ -11,4 +11,5 @@
 // TestLinkedList.TestInsert();
 // TestLinkedList.TestIndexOf();
 // TestLinkedList.TestRemove();
-TestLinkedList.TestRemoveAt();
+// TestLinkedList.TestRemoveAt();
+TestLinkedList.TestEnumerate();

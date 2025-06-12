@@ -293,6 +293,18 @@ public class LinkedList<T>
         return stringBuilder.ToString();
     }
 
+    public IEnumerator<T> GetEnumerator()
+    {
+        var ptr = _head;
+
+        while (ptr is not null)
+        {
+            yield return ptr.data;
+            
+            ptr = ptr.next;
+        }
+    }
+
     /// <summary>
     /// 链表节点
     /// </summary>
