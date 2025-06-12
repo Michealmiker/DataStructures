@@ -73,6 +73,18 @@ public static class TestLinkedList
         PrintListInfo();
     }
     
+    public static void TestRemoveAt()
+    {
+        for (var i = 0; i < 10; i++)
+        {
+            _linkedList.Add(i + 1);
+        }
+        
+        _linkedList.RemoveAt(5);
+        
+        PrintListInfo();
+    }
+    
     private static void PrintListInfo()
     {
         Console.WriteLine("表信息：");

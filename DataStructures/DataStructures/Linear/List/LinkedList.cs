@@ -223,6 +223,55 @@ public class LinkedList<T>
             ptr = ptr.next;
         }
     }
+
+    /// <summary>
+    /// 从表指定位置处删除元素（index基于0）
+    /// </summary>
+    /// <param name="index"></param>
+    public void RemoveAt(int index)
+    {
+        // 1. 检查表是否为空，如果为空，则直接抛出异常
+        if (_head is null)
+        {
+            throw new NullReferenceException("链表为空");
+        }
+        
+        // 2. 如果不为空，检查index是否超出Count的界限
+        if (index < 0 || index > Count)
+        {
+            throw new ArgumentOutOfRangeException("指定的位置超过Count的界限");
+        }
+        
+        // 3. 如果index为0，则直接使表头引用指向其下一个节点
+        if (index == 0)
+        {
+            var node = _head;
+            
+            _head = _head.next;
+
+            node.next = null;
+
+            Count--;
+
+            return;
+        }
+        
+        // 4. 如果index不为0，则创建一个临时引用，
+        //    将临时引用向后移动index-1位
+        var ptr = _head;
+        var length = index - 1;
+
+        for (var i = 0; i < length; i++)
+        {
+            ptr = ptr!.next;
+        }
+
+        // 5. 将临时引用当前所指向的节点的下一个节点，指向其下下一个节点
+        ptr!.next = ptr.next!.next;
+
+        // 6. 表长度减1
+        Count--;
+    }
     
     public override string ToString()
     {
